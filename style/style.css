@@ -72,6 +72,9 @@ label #sidebar_btn:hover{
 #check:checked ~ .content {
     margin-left: 5%;
 }
+#check:checked ~ .table {
+    margin-left: 20%;
+}
 #check:checked ~ .sidebar a{
     font-size: 20px;
     margin-left: 170px;
@@ -98,3 +101,23 @@ label #sidebar_btn:hover{
 .content label{
     display: block;
 }
+
+.table {
+    padding-top: 12%;
+    margin-left: 50%;
+    margin-right: 20%;
+    font-size: xx-large;
+    transition: 0.5s;
+    transition-property: margin-left;
+}
+.table table{
+    border: 2px solid;
+    
+}
+.table td{
+    border: 2px solid;
+    
+    
+}
+
+
