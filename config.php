@@ -3,7 +3,7 @@
 $server = "localhost";
 $user = "thiennc"; 
 $pass = "11072001";
-$dbname = "embedded;
+$dbname = "embedded";
 
 $conn = mysqli_connect($server,$user,$pass,$dbname);
 
