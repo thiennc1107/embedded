@@ -126,5 +126,23 @@ label #sidebar_btn:hover{
 }
 .panel {
     display: block;
+    margin-top: 3ch;
+    margin-right: 25%;
+    margin-left: 10%;
+}
+.Title{
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
+
+input #tuoi_manual
+{
+    height: 50px;
+    width: 50px;
+}
+input #den_manual
+{
+    height: 50px;
+    width: 50px;
+}
