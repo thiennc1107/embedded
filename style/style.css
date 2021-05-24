@@ -69,10 +69,10 @@ label #sidebar_btn:hover{
     display: none;
     
 }
-#check:checked ~ .content {
+#check:checked ~ .content form{
     margin-left: 5%;
 }
-#check:checked ~ .table {
+#check:checked ~ .content table {
     margin-left: 20%;
 }
 #check:checked ~ .sidebar a{
@@ -82,17 +82,22 @@ label #sidebar_btn:hover{
 }
 .content {
     padding-top: 14%;
-    margin-left: 20%;
-    margin-right: 20%;
     font-size: xx-large;
-    transition: 0.5s;
-    transition-property: margin-left;
-    
+    background: url(background.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
 
 }
 .content form{
+    margin-left: 20%;
+    margin-right: 20%;
     border: 2px solid;
     border-radius: 1ch;
+    transition: 0.5s;
+    transition-property: margin-left;
+    color: rgb(24, 27, 207);
+    background-color: azure;
 }
 #check{
     display: none;
@@ -100,15 +105,17 @@ label #sidebar_btn:hover{
 }
 .content label{
     display: block;
+    color: rgb(24, 27, 207);
 }
 
-.table {
-    padding-top: 12%;
+.content table {
     margin-left: 50%;
     margin-right: 20%;
     font-size: xx-large;
     transition: 0.5s;
     transition-property: margin-left;
+    color: rgb(24, 27, 207);
+    background-color: azure;
 }
 .table table{
     border: 2px solid;
@@ -116,8 +123,8 @@ label #sidebar_btn:hover{
 }
 .table td{
     border: 2px solid;
-    
-    
 }
-
+.panel {
+    display: block;
+}
 
