@@ -7,7 +7,7 @@
     $batden = $_POST["bden"];
     $tatden = $_POST["tden"];
     // update lai database
-    $sql = "update Auto set tuoi_bat=$batdautuoi,tuoi_tat=$ketthuctuoi,den_bat=$batden,den_tat=$tatden";
+    $sql = "INSERT INTO `Auto` (`den_bat`, `den_tat`, `tuoi_bat`, `tuoi_tat`) VALUES ('$batden ', '$tatden', '$batdautuoi', '$ketthuctuoi'), ('', '', '', '')";
     mysqli_query($conn, $sql);
     mysqli_close($conn);
 
