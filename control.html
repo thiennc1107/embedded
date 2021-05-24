@@ -24,22 +24,22 @@
     </div>
     <div class="content">
         <div class= "panel">
-        <form action="" method="post">
+        <form action="writeAuto.php" id="dieukhien" method="post">
                 <input type="checkbox" name="chedo" value="Automatic"> Automatic
             <br>
             <label>Tưới nước </label>
-            Start time: <input type="time" name="batdautuoi">
-            End time: <input type="time" name="ketthuctuoi">
+            Start time: <input type="time" name="bdtuoi" id="batdautuoi">
+            End time: <input type="time" name="kttuoi" id="ketthuctuoi">
             <br>
             <label>Bật Đèn</label>
-            Start time: <input type="time" name="batden">
-            End time: <input type="time" name="tatden">
+            Start time: <input type="time" name="bden" id="batden">
+            End time: <input type="time" name="tden" id="tatden">
             <br>
             <input type="submit" value="Kích Hoạt">
         </form>
         </div>
         <div class = "panel">
-        <form  action="" method="post">
+        <form  action="writeManual.php" id="dieukhien" method="post">
              <input type="checkbox" name="chedo" value="Manual"> Manual
             <br>
             Nước: <input type="checkbox" name="tuoi" value="Tuoi"> Tưới
@@ -50,7 +50,6 @@
         </form>
         </div>
     </div>
-    
 
 
 </body>
