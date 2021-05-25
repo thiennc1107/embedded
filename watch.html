@@ -5,7 +5,7 @@
     <title>Hệ thống trồng rau tự động </title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
+    
 </head>
 <body>
     <input type="checkbox" id="check">
@@ -33,18 +33,57 @@
             </tr>
             <tr>
                 <td>1</td>
-                <td></td>
-                <td></td>
+                <td id="nhietdo1"></td>
+                <td id="doam1"></td>
             </tr>
             <tr>
                 <td>2</td>
-                <td></td>
-                <td></td>
+                <td id="nhietdo2"></td>
+                <td id="doam2"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td id="nhietdo3"></td>
+                <td id="doam3"></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td id="nhietdo4"></td>
+                <td id="doam4"></td>
             </tr>
         </table>
     </div>
     </div>
+<script>
+            $(document).ready(function(){
+                updateTable();
+            })
+            setInterval(updateTable,1000);
+            function updateTable(){
+                $.post("readstatus.php",
+                function(data){
+                    var nhietdo = data[0].nhietdo;
+                    var doam = data[0].doam;
+                    document.getElementById("nhietdo1").innerHTML = nhietdo;
+                    document.getElementById("doam1").innerHTML = doam;
 
+                    var nhietdo = data[1].nhietdo;
+                    var doam = data[1].doam;
+                    document.getElementById("nhietdo2").innerHTML = nhietdo;
+                    document.getElementById("doam2").innerHTML = doam;
 
+                    var nhietdo = data[2].nhietdo;
+                    var doam = data[2].doam;
+                    document.getElementById("nhietdo3").innerHTML = nhietdo;
+                    document.getElementById("doam3").innerHTML = doam;
+
+                    var nhietdo = data[3].nhietdo;
+                    var doam = data[3].doam;
+                    document.getElementById("nhietdo4").innerHTML = nhietdo;
+                    document.getElementById("doam4").innerHTML = doam;
+
+                } )
+            }
+        </script>
 </body>
 </html>
