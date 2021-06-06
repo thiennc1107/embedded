@@ -20,11 +20,11 @@
       data.addColumn('number', "Speed");
 
       data.addRows([
-        [0,  data[0].angle, data[0].speed],
-        [1,  data[1].angle, data[1].speed],
-        [2,  data[2].angle, data[2].speed],
-        [3,  data[3].angle, data[3].speed],
-        [4,  data[4].angle, data[4].speed]
+        [1,  -.5,  100],
+        [2,   .4,  8.7],
+        [3,   .5,   12],
+        [4,  2.9, 15.3],
+        [5,  6.3, 18.6]
       ]);
 
 
@@ -75,39 +75,14 @@
         <a href="control.html"><i class="fa fa-tint"></i><span>Điều khiển</span></a>
 
     </div>
+    
     <div class="content">
-    <div id="chart_div"></div>
+    <div class="chart">
+        <div id="chart_div"></div>
+    </div>
     </div>
 <script>
-            $(document).ready(function(){
-                updateTable();
-            })
-            setInterval(updateTable,1000);
-            function updateTable(){
-                $.post("readstatus.php",
-                function(data){
-                    var nhietdo = data[0].nhietdo;
-                    var doam = data[0].doam;
-                    document.getElementById("nhietdo1").innerHTML = nhietdo;
-                    document.getElementById("doam1").innerHTML = doam;
-
-                    var nhietdo = data[1].nhietdo;
-                    var doam = data[1].doam;
-                    document.getElementById("nhietdo2").innerHTML = nhietdo;
-                    document.getElementById("doam2").innerHTML = doam;
-
-                    var nhietdo = data[2].nhietdo;
-                    var doam = data[2].doam;
-                    document.getElementById("nhietdo3").innerHTML = nhietdo;
-                    document.getElementById("doam3").innerHTML = doam;
-
-                    var nhietdo = data[3].nhietdo;
-                    var doam = data[3].doam;
-                    document.getElementById("nhietdo4").innerHTML = nhietdo;
-                    document.getElementById("doam4").innerHTML = doam;
-
-                } )
-            }
-        </script>
+        
+</script>
 </body>
 </html>
