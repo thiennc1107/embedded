@@ -6,86 +6,86 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['line', 'corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-var angle=(0,1,2,3,4);
-var speed=(0,1,2,3,4);
-    function drawChart() {
-
-      var chartDiv = document.getElementById('chart_div');
-
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'Time');
-      data.addColumn('number', "Angle");
-      data.addColumn('number', "Speed");
-
-      data.addRows([
-        [0,  angle[0], speed[0]],
-        [1,  angle[1], speed[1]],
-        [2,  angle[2], speed[2]],
-        [3,  angle[3], speed[3]],
-        [4,  angle[4], speed[4]]
-      ]);
-
-
-
-      var classicOptions = {
-        title: 'Average Temperatures and Daylight in Iceland Throughout the Year',
-        width: 900,
-        height: 500,
-        // Gives each series an axis that matches the vAxes number below.
-        series: {
-          0: {targetAxisIndex: 0},
-          1: {targetAxisIndex: 1}
-        },
-        vAxes: {
-          // Adds titles to each axis.
-          0: {title: 'Angle (degree)'},
-          1: {title: 'Speed (m/s)'}
-        },
-        hAxis: {
-          ticks: [1, 2, 3, 4, 5]
-        },
-        vAxis: {
-          viewWindow: {
-            max: 30
-          }
-        }
-      };
-        var materialChart = new google.charts.Line(chartDiv);
-        materialChart.draw(data, classicOptions);
-
-
-    }
-    
-            $(document).ready(function(){
-                updateTable();
-            })
-            setInterval(updateTable,1000);
-            function updateTable(){
-                $.post("readstatus.php",
-                function(data){
-                    angle[0] = data[0].angle;
-                    speed[0] = data[0].speed;
-                    
-                    angle[1] = data[1].angle;
-                    speed[1] = data[1].speed;
-                    
-                    angle[2] = data[2].angle;
-                    speed[2] = data[2].speed;
-                    
-                    angle[3] = data[3].angle;
-                    speed[3] = data[3].speed;
-                    
-                    angle[4] = data[4].angle;
-                    speed[4] = data[4].speed;
-                    
-                } )
-            }
-        </script>
 </head>
 <body>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['line', 'corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+var angle=(0,1,2,3,4);
+var speed=(0,1,2,3,4);
+  function drawChart() {
+
+    var chartDiv = document.getElementById('chart_div');
+
+    var data = new google.visualization.DataTable();
+    data.addColumn('number', 'Time');
+    data.addColumn('number', "Angle");
+    data.addColumn('number', "Speed");
+
+    data.addRows([
+      [0,  angle[0], speed[0]],
+      [1,  angle[1], speed[1]],
+      [2,  angle[2], speed[2]],
+      [3,  angle[3], speed[3]],
+      [4,  angle[4], speed[4]]
+    ]);
+
+
+
+    var classicOptions = {
+      title: 'Average Temperatures and Daylight in Iceland Throughout the Year',
+      width: 900,
+      height: 500,
+      // Gives each series an axis that matches the vAxes number below.
+      series: {
+        0: {targetAxisIndex: 0},
+        1: {targetAxisIndex: 1}
+      },
+      vAxes: {
+        // Adds titles to each axis.
+        0: {title: 'Angle (degree)'},
+        1: {title: 'Speed (m/s)'}
+      },
+      hAxis: {
+        ticks: [1, 2, 3, 4, 5]
+      },
+      vAxis: {
+        viewWindow: {
+          max: 30
+        }
+      }
+    };
+      var materialChart = new google.charts.Line(chartDiv);
+      materialChart.draw(data, classicOptions);
+
+
+  }
+  
+          $(document).ready(function(){
+              updateTable();
+          })
+          setInterval(updateTable,1000);
+          function updateTable(){
+              $.post("readstatus.php",
+              function(data){
+                  angle[0] = data[0].angle;
+                  speed[0] = data[0].speed;
+                  
+                  angle[1] = data[1].angle;
+                  speed[1] = data[1].speed;
+                  
+                  angle[2] = data[2].angle;
+                  speed[2] = data[2].speed;
+                  
+                  angle[3] = data[3].angle;
+                  speed[3] = data[3].speed;
+                  
+                  angle[4] = data[4].angle;
+                  speed[4] = data[4].speed;
+                  
+              } )
+          }
+      </script>
     <input type="checkbox" id="check">
     <header>
         <label for="check">
