@@ -137,14 +137,16 @@ label #sidebar_btn:hover{
 
 
 .speedChart{
-    display: inline-block;
+    position:fixed;
+    display: block;
     height: 300px;
     width: 60%;
     margin-left: 25%;
     top: 0ch;
 }
 .angleChart{
-    display: inline-block;
+    position:fixed;
+    display: block;
     height: 300px;
     width: 60%;
     margin-left: 25%;
