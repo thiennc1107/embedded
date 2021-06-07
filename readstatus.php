@@ -4,7 +4,8 @@ header('Content-Type: application/json');
 // dang nhap vao database
 include("config.php");
 
-$sql = "SELECT `speed` FROM `status` WHERE 1";
+// Doc gia tri RGB tu database
+$sql = "select * from status where 1";
 $result = mysqli_query($conn,$sql);
 
 $data = array();
