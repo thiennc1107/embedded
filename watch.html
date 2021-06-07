@@ -5,50 +5,58 @@
     <title>Hệ thống trồng rau tự động </title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script type="text/javascript">
+      window.onload = function () {
+    
+          var dps = [{x: 1, y: 10}, {x: 2, y: 13}, {x: 3, y: 18}, {x: 4, y: 20}, {x: 5, y: 17},{x: 6, y: 10}, {x: 7, y: 13}, {x: 8, y: 18}, {x: 9, y: 20}, {x: 10, y: 17}];   //dataPoints. 
+    
+          var chart = new CanvasJS.Chart("chartContainer",{
+            title :{
+              text: "SpeedData"
+            },
+            axisX: {						
+              title: "Time"
+            },
+            axisY: {						
+              title: "Speed"
+            },
+            data: [{
+              type: "line",
+              dataPoints : dps
+            }]
+          });
+    
+          chart.render();
+          var xVal = dps.length + 1;
+          var yVal = 15;	
+          var updateInterval = 1000;
+    
+          var updateChart = function () {
+            
+            function updateTable(){
+                $.post("readstatus.php",
+                function(data){
+                  yVal = data[0].speed;                   
+                } )
+            }
+            dps.push({x: xVal,y: yVal});
+            
+            xVal++;
+            if (dps.length >  10 )
+            {
+              dps.shift();				
+            }
+    
+            chart.render();		
+    
+      // update chart after specified time. 
+    
+    };
+    
+    setInterval(function(){updateChart()}, updateInterval); 
+    }
+    </script>
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script type = "text/javascript" >
-      var dps = [{x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0}];   //dataPoints. 
- 
-      var chart = new CanvasJS.Chart("chartContainer",{
-        title :{
-          text: "Speed"
-        },
-        axisX: {						
-          title: "Time"
-        },
-        axisY: {						
-          title: "Speed"
-        },
-        data: [{
-          type: "line",
-          dataPoints : dps
-        }]
-      });
-      chart.render();
-      var xVal = dps.length + 1;
-      var yVal = 100;	
-      var updateInterval = 1000;
-      
-      var updateChart = function () {
-        
-        
-          yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
-          dps.push({x: xVal,y: yVal,});
-          
-          xVal++;
-          if (dps.length >  10 )
-      	  {
-      	  	dps.shift();				
-      	  }
-        
-        chart.render();		
-      
-        // update chart after specified time. 
-      
-      };
-      setInterval(function(){updateChart()}, updateInterval); 
-      </script>
-      <script type = "text/javascript" src = "/assets/script/canvasjs.min.js" >  </script>
 </head>
 <body>
     <input type="checkbox" id="check">
@@ -67,6 +75,10 @@
 
     </div>
     <div class="content">
-    <div id="chartContainer" ></div>
+      <div id="chartContainer" style="height: 300px; width: 100%;">
+      </div>
+    </div>
+    
+    
 </body>
 </html>
