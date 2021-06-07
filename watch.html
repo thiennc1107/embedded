@@ -36,7 +36,7 @@
             function updateTable(){
                 $.post("readstatus.php",
                 function(data){
-                  yVal = data[0].speed;                   
+                  yVal = data[1].speed;                   
                 } )
             }
             dps.push({x: xVal,y: yVal});
