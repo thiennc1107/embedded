@@ -45,6 +45,10 @@
       // update chart after specified time. 
     
           };
+          $(document).ready(function(){
+                updateTable();
+            })
+          setInterval(updateData,updateInterval);
           function updateData(){
                       $.post("readstatus.php",
                       function(data){
@@ -53,7 +57,7 @@
           }
     
     setInterval(function(){updateChart()}, updateInterval); 
-    setInterval(updateData,updateInterval);
+    
     }
     </script>
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
