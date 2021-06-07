@@ -10,7 +10,7 @@ $result = mysqli_query($conn,$sql);
 
 $data = array();
 foreach ($result as $row){
-    $data[] = $row;
+    $data[0] = $row;
 }
 
 mysqli_close($conn);
