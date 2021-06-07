@@ -107,22 +107,6 @@ label #sidebar_btn:hover{
     color: rgb(24, 27, 207);
 }
 
-.content table {
-    margin-left: 50%;
-    margin-right: 20%;
-    font-size: xx-large;
-    transition: 0.5s;
-    transition-property: margin-left;
-    color: rgb(24, 27, 207);
-    background-color: azure;
-}
-.table table{
-    border: 2px solid;
-    
-}
-.table td{
-    border: 2px solid;
-}
 .panel {
     display: block;
     margin-top: 3ch;
