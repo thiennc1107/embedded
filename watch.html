@@ -25,16 +25,13 @@
               dataPoints : dps
             }]
           });
-    
           chart.render();
+
           var xVal = dps.length + 1;
           var yVal = 0;	
           var updateInterval = 1000;
     
           var updateChart = function () {
-          
-          
-          yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
           dps.push({x: xVal,y: yVal});
           
           xVal++;
