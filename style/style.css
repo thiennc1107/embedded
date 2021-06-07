@@ -81,7 +81,7 @@ label #sidebar_btn:hover{
     width: 80px;
 }
 .content {
-    padding-top: 14%;
+    padding-top: 5%;
     font-size: xx-large;
     background: url(background.jpg) no-repeat;
     background-position: center;
@@ -136,3 +136,32 @@ label #sidebar_btn:hover{
 }
 
 
+.speedChart{
+    display: block;
+    height: 300px;
+    width: 60%;
+    margin-left: 25%;
+    top: 0ch;
+}
+.angleChart{
+    display: block;
+    height: 300px;
+    width: 60%;
+    margin-left: 25%;
+    margin-top: 2ch;
+}
+
+#check:checked ~ .speedChart{
+    width: 80%;
+    margin-left: 10%;
+    transition: 0.5s;
+    transition-property: margin-left;
+    transition-property: width;
+}
+#check:checked ~ .angleCharts{
+    width: 80%;
+    margin-left: 10%;
+    transition: 0.5s;
+    transition-property: margin-left;
+    transition-property: width;
+}
