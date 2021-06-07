@@ -5,62 +5,51 @@
     <title>Hệ thống trồng rau tự động </title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['line', 'corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-var angle=(0,1,2,3,4);
-var speed=(0,1,2,3,4);
-    function drawChart() {
-
-      var chartDiv = document.getElementById('chart_div');
-
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'Time');
-      data.addColumn('number', "Angle");
-      data.addColumn('number', "Speed");
-
-      data.addRows([
-        [0,  angle[0], speed[0]],
-        [1,  angle[1], speed[1]],
-        [2,  angle[2], speed[2]],
-        [3,  angle[3], speed[3]],
-        [4,  angle[4], speed[4]]
-      ]);
-
-
-
-      var classicOptions = {
-        title: 'Average Temperatures and Daylight in Iceland Throughout the Year',
-        width: 900,
-        height: 500,
-        // Gives each series an axis that matches the vAxes number below.
-        series: {
-          0: {targetAxisIndex: 0},
-          1: {targetAxisIndex: 1}
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
+    <script type = "text/javascript" >
+      var dps = [{x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0}];   //dataPoints. 
+ 
+      var chart = new CanvasJS.Chart("chartContainer",{
+        title :{
+          text: "Speed"
         },
-        vAxes: {
-          // Adds titles to each axis.
-          0: {title: 'Angle (degree)'},
-          1: {title: 'Speed (m/s)'}
+        axisX: {						
+          title: "Time"
         },
-        hAxis: {
-          ticks: [1, 2, 3, 4, 5]
+        axisY: {						
+          title: "Speed"
         },
-        vAxis: {
-          viewWindow: {
-            max: 30
-          }
-        }
+        data: [{
+          type: "line",
+          dataPoints : dps
+        }]
+      });
+      chart.render();
+      var xVal = dps.length + 1;
+      var yVal = 100;	
+      var updateInterval = 1000;
+      
+      var updateChart = function () {
+        
+        
+          yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
+          dps.push({x: xVal,y: yVal,});
+          
+          xVal++;
+          if (dps.length >  10 )
+      	  {
+      	  	dps.shift();				
+      	  }
+        
+        chart.render();		
+      
+        // update chart after specified time. 
+      
       };
-        var materialChart = new google.charts.Line(chartDiv);
-        materialChart.draw(data, classicOptions);
-
-
-    }
-    
-            
-        </script>
+      setInterval(function(){updateChart()}, updateInterval); 
+      </script>
+      <script type = "text/javascript" src = "/assets/script/canvasjs.min.js" >  </script>
 </head>
 <body>
     <input type="checkbox" id="check">
@@ -79,33 +68,6 @@ var speed=(0,1,2,3,4);
 
     </div>
     <div class="content">
-    <div id="chart_div"></div>
-    </div>
-    <script>
-$(document).ready(function(){
-                updateTable();
-            })
-            setInterval(updateTable,1000);
-            function updateTable(){
-                $.post("readstatus.php",
-                function(data){
-                    angle[0] = data[0].angle;
-                    speed[0] = data[0].speed;
-                    
-                    angle[1] = data[1].angle;
-                    speed[1] = data[1].speed;
-                    
-                    angle[2] = data[2].angle;
-                    speed[2] = data[2].speed;
-                    
-                    angle[3] = data[3].angle;
-                    speed[3] = data[3].speed;
-                    
-                    angle[4] = data[4].angle;
-                    speed[4] = data[4].speed;
-                    
-                } )
-            }
-    </script>
+    <div id = "chartContainer" style = "height: 300px; width: 100%;"></div>
 </body>
 </html>
