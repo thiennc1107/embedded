@@ -151,17 +151,3 @@ label #sidebar_btn:hover{
     margin-top: 2ch;
 }
 
-#check:checked ~ .speedChart{
-    width: 80%;
-    margin-left: 10%;
-    transition: 0.5s;
-    transition-property: margin-left;
-    transition-property: width;
-}
-#check:checked ~ .angleCharts{
-    width: 80%;
-    margin-left: 10%;
-    transition: 0.5s;
-    transition-property: margin-left;
-    transition-property: width;
-}
