@@ -46,15 +46,16 @@
     
           };
           $(document).ready(function(){
-                updateData();
+                updateTable();
             })
-          setInterval(updateData,updateInterval);
-          function updateData(){
-                      $.post("readstatus.php",
-                      function(data){
-                        yVal = data[0].speed;
-                      } )
-          }
+            setInterval(updateTable,1000);
+            function updateTable(){
+                $.post("readstatus.php",
+                function(data){
+                    yVal = data[0].speed;
+
+                } )
+            }
     
     setInterval(function(){updateChart()}, updateInterval); 
     
