@@ -82,7 +82,7 @@ label #sidebar_btn:hover{
 .content {
     padding-top: 7%;
     font-size: xx-large;
-    background: url(background.jpg) no-repeat;
+    background: url(background.png) no-repeat;
     background-position: center;
     background-size: cover;
     height: 100vh;
