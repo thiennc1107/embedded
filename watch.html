@@ -52,7 +52,7 @@
             function updateTable(){
                 $.post("readstatus.php",
                 function(data){
-                    yVal = data[0].speed;
+                    yVal = parseInt(data[0].speed);
 
                 } )
             }
