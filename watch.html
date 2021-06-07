@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script type="text/javascript">
+      var yVal = 0;	
       window.onload = function () {
     
           var dps = [{x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0},{x: 6, y: 0}, {x: 7, y: 0}, {x: 8, y: 0}, {x: 9, y: 0}, {x: 10, y: 0}];   //dataPoints. 
@@ -26,9 +27,7 @@
             }]
           });
           chart.render();
-
           var xVal = dps.length + 1;
-          var yVal = 0;	
           var updateInterval = 1000;
     
           var updateChart = function () {
