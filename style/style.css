@@ -57,7 +57,6 @@ label #sidebar_btn{
     transition: 0.5s;
     transition-property: color;
 }
-
 label #sidebar_btn:hover{
     color: #4b82a1;
 }
@@ -134,8 +133,6 @@ label #sidebar_btn:hover{
     margin-left: 25%;
     margin-right: 25%;
 }
-
-
 .speedChart{
     height: 300px;
     width: 60%;
