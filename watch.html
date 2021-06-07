@@ -9,10 +9,11 @@
     <script type="text/javascript">
       
       window.onload = function () {
-          var yVal = 0;	
-          var dps = [{x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0},{x: 6, y: 0}, {x: 7, y: 0}, {x: 8, y: 0}, {x: 9, y: 0}, {x: 10, y: 0}];   //dataPoints. 
-    
-          var chart = new CanvasJS.Chart("chartContainer",{
+          var speed = 0;
+          var angle = 0;	
+          var speedDps = [{x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0},{x: 6, y: 0}, {x: 7, y: 0}, {x: 8, y: 0}, {x: 9, y: 0}, {x: 10, y: 0}];   //dataPoints. 
+          var angleDps = [{x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0},{x: 6, y: 0}, {x: 7, y: 0}, {x: 8, y: 0}, {x: 9, y: 0}, {x: 10, y: 0}];
+          var speedChart = new CanvasJS.Chart("speedChartContainer",{
             title :{
               text: "SpeedData"
             },
@@ -24,20 +25,40 @@
             },
             data: [{
               type: "line",
-              dataPoints : dps
+              dataPoints : speedDps
             }]
           });
-          chart.render();
+          speedChart.render();
+          
+          var chart = new CanvasJS.Chart("angleChartContainer",{
+            title :{
+              text: "AngleData"
+            },
+            axisX: {						
+              title: "Time"
+            },
+            axisY: {						
+              title: "Speed"
+            },
+            data: [{
+              type: "line",
+              dataPoints : angleDps
+            }]
+          });
+          angleChart.render();
+
           var xVal = dps.length + 1;
           var updateInterval = 1000;
     
           var updateChart = function () {
-          dps.push({x: xVal,y: yVal});
+          speedDps.push({x: xVal,y: speed});
+          angleDps.push({x: xVal,y: angle});
           
           xVal++;
-          if (dps.length >  10 )
+          if (speedDps.length >  10 )
           {
-            dps.shift();				
+            speedDps.shift();
+            angleDps.shift();				
           }
 
           chart.render();		
@@ -52,8 +73,8 @@
             function updateTable(){
                 $.post("readstatus.php",
                 function(data){
-                    yVal = parseInt(data[0].speed);
-
+                    speed = parseInt(data[0].speed);
+                    angle = parseInt(data[0].angle);
                 } )
             }
     
@@ -80,7 +101,9 @@
 
     </div>
     <div class="content">
-      <div id="chartContainer" style="height: 300px; width: 100%;">
+      <div id="speedChartContainer" style="height: 300px; width: 100%;">
+      </div>
+      <div id="angleChartContainer" style="height: 300px; width: 100%;">
       </div>
     </div>
     
