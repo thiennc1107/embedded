@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 include("config.php");
 
 // Doc gia tri RGB tu database
-$sql = "SELECT * FROM `status` WHERE 1";
+$sql = "select * from status";
 $result = mysqli_query($conn,$sql);
 
 $data = array();
