@@ -62,27 +62,6 @@
     }
     </script>
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script>
-        
-        $(document).ready(function(){
-                updatePID();
-            })
-        function updatePID(){
-        $.post("readPID.php",
-        function(data){
-            // doc gia tri tu server gui len
-            var p = data[0].kp;
-            var i = data[0].ki
-            var d = data[0].kd;
-            // gan gia cho cac phan tu
-            document.getElementById("ki").innerHTML = p;
-            document.getElementById("kp").innerHTML = i;
-            document.getElementById("kd").innerHTML = d;
-        }) 
-
-      
-    </script>
-
 </head>
 <body>
     <input type="checkbox" id="check">
@@ -122,6 +101,26 @@
                 return false;
             });
         });
+</script>
+<script>
+        
+    $(document).ready(function(){
+            updatePID();
+        })
+    function updatePID(){}
+    $.post("readPID.php",
+    function(data){
+        // doc gia tri tu server gui len
+        var p = data[0].kp;
+        var i = data[0].ki
+        var d = data[0].kd;
+        // gan gia cho cac phan tu
+        document.getElementById("ki").innerHTML = p;
+        document.getElementById("kp").innerHTML = i;
+        document.getElementById("kd").innerHTML = d;
+    }) 
+
+  
 </script>
 </body>
 </html>
