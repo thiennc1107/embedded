@@ -100,13 +100,8 @@
                 $.post('writePID.php',$('#dieukhien').serialize());
                 return false;
             });
-        });
-</script>
-<script>
-        
-    $(document).ready(function(){
             updatePID();
-        })
+        });
     function updatePID(){}
     $.post("readPID.php",
     function(data){
