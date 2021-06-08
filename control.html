@@ -104,7 +104,7 @@
         });
 </script>
 <script>
-        
+        window.onload = function(){
             // gui http request xuong server
             $.post("readPID.php",
             function(data){
@@ -117,6 +117,7 @@
                 document.getElementById("kp").innerHTML = i;
                 document.getElementById("kd").innerHTML = d;
             }) 
+        }
           
     </script>
 </body>
