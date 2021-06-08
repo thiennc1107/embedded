@@ -6,7 +6,7 @@
     $ki = $_POST["ki"];
     $kd = $_POST["kd"];
     // update lai database
-    $sql = "UPDATE pid SET `P`=$kp,`I`=$i,`D`=$kd WHERE 1";
+    $sql = "UPDATE `pid` SET `P`='$kp',`I`='$i',`D`='$kd' WHERE 1";
     mysqli_query($conn, $sql);
     mysqli_close($conn);
 
