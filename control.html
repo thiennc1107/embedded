@@ -103,7 +103,7 @@
             updatePID();
         });
         setInterval(updatePID,1000);
-    function updatePID(){}
+    function updatePID(){
     $.post("readPID.php",
     function(data){
         // doc gia tri tu server gui len
@@ -115,7 +115,7 @@
         document.getElementById("kp").innerHTML = i;
         document.getElementById("kd").innerHTML = d;
     }) 
-
+    }
   
 </script>
 </body>
