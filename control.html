@@ -53,7 +53,7 @@
             function updateTable(){
                 $.post("readstatus.php",
                 function(data){
-                    error = parseInt(data[0].error);
+                    error = parseFloat(data[0].error);
                 } )
             }
     
