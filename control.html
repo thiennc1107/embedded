@@ -81,7 +81,7 @@
     </div>
     <div class="content">
         <div class= "panel">
-        <form id="dieukhien" method="post">
+        <form id="dieukhien" method="get">
             <label>PID </label>
             Kp = <input type="text" step=1  name="kp" id="kp">  <br>
             Ki = <input type="text" step=1  name="ki" id="ki">  <br>
@@ -103,5 +103,21 @@
             });
         });
 </script>
+<script>
+        
+            // gui http request xuong server
+            $.post("readPID.php",
+            function(data){
+                // doc gia tri tu server gui len
+                var p = data[0].kp;
+                var i = data[0].ki
+                var d = data[0].kd;
+                // gan gia cho cac phan tu
+                document.getElementById("ki").innerHTML = p;
+                document.getElementById("kp").innerHTML = i;
+                document.getElementById("kd").innerHTML = d;
+            }) 
+          
+    </script>
 </body>
 </html>
