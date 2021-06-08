@@ -64,7 +64,10 @@
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script>
         
-        // gui http request xuong server
+        $(document).ready(function(){
+                updatePID();
+            })
+        function updatePID(){
         $.post("readPID.php",
         function(data){
             // doc gia tri tu server gui len
@@ -76,6 +79,8 @@
             document.getElementById("kp").innerHTML = i;
             document.getElementById("kd").innerHTML = d;
         }) 
+    }
+
       
     </script>
 
