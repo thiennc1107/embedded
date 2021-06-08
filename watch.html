@@ -74,8 +74,8 @@
             function updateTable(){
                 $.post("readstatus.php",
                 function(data){
-                    speed = parseInt(data[0].speed);
-                    angle = parseInt(data[0].angle);
+                    speed = parseFloat(data[0].speed);
+                    angle = parseFloat(data[0].angle);
                 } )
             }
     
