@@ -107,9 +107,9 @@
     $.post("readPID.php",
     function(data){
         // doc gia tri tu server gui len
-        var p = data[0].kp;
-        var i = data[0].ki
-        var d = data[0].kd;
+        var p = data[0].P;
+        var i = data[0].I;
+        var d = data[0].D;
         // gan gia cho cac phan tu
         document.getElementById("ki").innerHTML = p;
         document.getElementById("kp").innerHTML = i;
