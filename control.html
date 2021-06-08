@@ -5,6 +5,63 @@
     <title>Hệ thống điều khiển robot cân bằng </title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      
+      window.onload = function () {
+          
+          var error = 0;	
+          var errorDps = [{x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0},{x: 6, y: 0}, {x: 7, y: 0}, {x: 8, y: 0}, {x: 9, y: 0}, {x: 10, y: 0}];
+          var errorChart = new CanvasJS.Chart("errorChartContainer",{
+            title :{
+              text: "errorData"
+            },
+            axisX: {						
+              title: "Time"
+            },
+            axisY: {						
+              title: "error"
+            },
+            data: [{
+              type: "line",
+              dataPoints : errorDps
+            }]
+          });
+          errorChart.render();
+
+          var xVal = errorDps.length + 1;
+          var updateInterval = 1000;
+    
+          var updateChart = function () {
+          errorDps.push({x: xVal,y: error});
+          
+          xVal++;
+          if (errorDps.length >  10 )
+          {
+            errorDps.shift();				
+          }
+
+          errorChart.render();		
+    
+      // update chart after specified time. 
+    
+          };
+          $(document).ready(function(){
+                updateTable();
+            })
+            setInterval(updateTable,1000);
+            function updateTable(){
+                $.post("readstatus.php",
+                function(data){
+                    error = parseInt(data[0].error);
+                } )
+            }
+    
+    setInterval(function(){updateChart()}, updateInterval); 
+    
+    }
+    </script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 </head>
 <body>
@@ -24,30 +81,18 @@
     </div>
     <div class="content">
         <div class= "panel">
-        <form action="writeAuto.php" id="dieukhien" method="POST">
-                <input type="checkbox" name="chedo" value="Automatic"> Automatic
-            <br>
-            <label>Tưới nước </label>
-            Start time: <input type="time" step=1 name="bdtuoi" id="batdautuoi">
-            End time: <input type="time" step=1  name="kttuoi" id="ketthuctuoi">
-            <br>
-            <label>Bật Đèn</label>
-            Start time: <input type="time" step=1  name="bden" id="batden">
-            End time: <input type="time" step=1  name="tden" id="tatden">
+        <form action="writePID.php" id="dieukhien" method="POST">
+            <label>PID </label>
+            Kp = <input type="text" step=1  name="kp" id="kp">  <br>
+            Ki = <input type="text" step=1  name="ki" id="ki">  <br>
+            Kd = <input type="text" step=1  name="kd" id="kd">
+            
             <br>
             <input type="submit" value="Kích Hoạt">
         </form>
         </div>
-        <div class = "panel">
-        <form  action="writeManual.php" id="dieukhien" method="POST">
-             <input type="checkbox" name="chedo" value="Manual"> Manual
-            <br>
-            Nước: <input type="radio" name="tuoi" value="Tuoi"> Tưới
-                  <input type="radio" name="tuoi" value="Dung"> Dừng Tưới <br>
-            ĐÈN:  <input type="radio" name="den" value="bat"> Bật
-                  <input type="radio" name="den" value="tat"> Tắt <br>
-            <input type="submit" value="Kích Hoạt">
-        </form>
+        <br> 
+        <div class="speedChart" id="errorChartContainer" >
         </div>
     </div>
 
