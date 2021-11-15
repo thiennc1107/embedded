@@ -51,8 +51,7 @@
             function updateTable(){
                 $.post("readstatus.php",
                 function(data){
-                    speed = parseFloat(data[0].speed);
-                    angle = parseFloat(data[0].angle);
+                    quality = parseFloat(data[0].quality);
                 } )
             }
     setInterval(function(){updateChart()}, updateInterval); 
