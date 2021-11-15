@@ -9,60 +9,37 @@
     <script type="text/javascript">
 
       window.onload = function () {
-          var speed = 0;
-          var angle = 0;
-          var speedDps = [{x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0},{x: 6, y: 0}, {x: 7, y: 0}, {x: 8, y: 0}, {x: 9, y: 0}, {x: 10, y: 0}];   //dataPoints. 
-          var angleDps = [{x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0},{x: 6, y: 0}, {x: 7, y: 0}, {x: 8, y: 0}, {x: 9, y: 0}, {x: 10, y: 0}];
-          var speedChart = new CanvasJS.Chart("speedChartContainer",{
+          var quality = 0;
+          var qualityDps = [{x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0},{x: 6, y: 0}, {x: 7, y: 0}, {x: 8, y: 0}, {x: 9, y: 0}, {x: 10, y: 0}];   //dataPoints. 
+          var qualityChart = new CanvasJS.Chart("qualityChartContainer",{
             title :{
-              text: "Dust"
+              text: "quality"
             },
             axisX: {
               title: "Time"
             },
             axisY: {
-              title: "mg/m3"
+              title: "ppm"
             },
             data: [{
               type: "line",
-              dataPoints : speedDps
+              dataPoints : qualityDps
             }]
           });
-          speedChart.render();
+          qualityChart.render();
 
-          var angleChart = new CanvasJS.Chart("angleChartContainer",{
-            title :{
-              text: "Humidity"
-            },
-            axisX: {
-              title: "Time"
-            },
-            axisY: {
-              title: "g/m³"
-            },
-            data: [{
-              type: "line",
-              dataPoints : angleDps
-            }]
-          });
-          angleChart.render();
-
-          var xVal = speedDps.length + 1;
+          var xVal = qualityDps.length + 1;
           var updateInterval = 1000;
 
           var updateChart = function () {
-          speedDps.push({x: xVal,y: speed});
-          angleDps.push({x: xVal,y: angle});
-
+          qualityDps.push({x: xVal,y: speed});
           xVal++;
-          if (speedDps.length >  10 )
+          if (qualityDps.length >  10 )
           {
-            speedDps.shift();
-            angleDps.shift();
+            qualityDps.shift();
           }
 
           speedChart.render();
-          angleChart.render();
 
       // update chart after specified time.
 
@@ -99,9 +76,7 @@
 
     </div>
     <div class="content">
-      <div class="speedChart" id="speedChartContainer">
-      </div>
-      <div class="angleChart" id="angleChartContainer" >
+      <div class="qualityChart" id="qualityChartContainer">
       </div>
     </div>
 </body>

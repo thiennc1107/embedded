@@ -117,16 +117,11 @@ label #sidebar_btn:hover{
     margin-left: 25%;
     margin-right: 25%;
 }
-.speedChart{
+.qualityChart{
     height: 300px;
     width: 60%;
     margin-left: 25%;
     top: 0ch;
 }
-.angleChart{
-    height: 300px;
-    width: 60%;
-    margin-left: 25%;
-    margin-top: 2ch;
-}
+
 
