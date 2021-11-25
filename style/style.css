@@ -51,9 +51,9 @@ label #sidebar_btn{
     color: #fff;
     position: fixed;
     cursor: pointer;
-    left: 450px;
+    left: 250px;
     font-size: 20px;
-    margin: 5px 0;
+    margin: 0px 0;
     transition: 0.5s;
     transition-property: color;
 }
@@ -100,7 +100,7 @@ label #sidebar_btn:hover{
 }
 #check{
     display: none;
-    padding-top: 100px;
+    padding-top: 70px;
 }
 .content label{
     display: block;
@@ -117,16 +117,11 @@ label #sidebar_btn:hover{
     margin-left: 25%;
     margin-right: 25%;
 }
-.speedChart{
+.qualityChart{
     height: 300px;
     width: 60%;
     margin-left: 25%;
     top: 0ch;
 }
-.angleChart{
-    height: 300px;
-    width: 60%;
-    margin-left: 25%;
-    margin-top: 2ch;
-}
+
 

@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 // dang nhap vao database
 include("config.php");
 
-// Doc gia tri RGB tu database
+// Doc gia tri tu database
 $sql = "select * from status";
 $result = mysqli_query($conn,$sql);
 

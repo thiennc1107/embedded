@@ -22,24 +22,6 @@ SET time_zone = "+00:00";
 -- Cơ sở dữ liệu: `embedded`
 --
 
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `pid`
---
-
-CREATE TABLE `pid` (
-  `P` double DEFAULT NULL,
-  `I` double DEFAULT NULL,
-  `D` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `pid`
---
-
-INSERT INTO `pid` (`P`, `I`, `D`) VALUES
-(12.6, 32.6, 4.6);
 
 -- --------------------------------------------------------
 
@@ -48,17 +30,15 @@ INSERT INTO `pid` (`P`, `I`, `D`) VALUES
 --
 
 CREATE TABLE `status` (
-  `error` double DEFAULT NULL,
-  `speed` double DEFAULT NULL,
-  `angle` double DEFAULT NULL
+  `quality` double DEFAULT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `status`
 --
 
-INSERT INTO `status` (`error`, `speed`, `angle`) VALUES
-(3.3, 2.2, 1.1);
+INSERT INTO `status` (`quality`) VALUES
+(3.3);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

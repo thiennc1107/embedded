@@ -1,71 +1,48 @@
-<!DOCTYPE html> 
-<html lang="en">   
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hệ thống điều khiển robot cân bằng</title>
+    <title>Air quality sensor</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
-      
-      window.onload = function () {
-          var speed = 0;
-          var angle = 0;	
-          var speedDps = [{x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0},{x: 6, y: 0}, {x: 7, y: 0}, {x: 8, y: 0}, {x: 9, y: 0}, {x: 10, y: 0}];   //dataPoints. 
-          var angleDps = [{x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0},{x: 6, y: 0}, {x: 7, y: 0}, {x: 8, y: 0}, {x: 9, y: 0}, {x: 10, y: 0}];
-          var speedChart = new CanvasJS.Chart("speedChartContainer",{
-            title :{
-              text: "SpeedData"
-            },
-            axisX: {						
-              title: "Time"
-            },
-            axisY: {						
-              title: "Speed"
-            },
-            data: [{
-              type: "line",
-              dataPoints : speedDps
-            }]
-          });
-          speedChart.render();
-          
-          var angleChart = new CanvasJS.Chart("angleChartContainer",{
-            title :{
-              text: "AngleData"
-            },
-            axisX: {						
-              title: "Time"
-            },
-            axisY: {						
-              title: "Angle"
-            },
-            data: [{
-              type: "line",
-              dataPoints : angleDps
-            }]
-          });
-          angleChart.render();
 
-          var xVal = speedDps.length + 1;
+      window.onload = function () {
+          var quality = 0;
+          var qualityDps = [{x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0},{x: 6, y: 0}, {x: 7, y: 0}, {x: 8, y: 0}, {x: 9, y: 0}, {x: 10, y: 0}];   //dataPoints. 
+          var qualityChart = new CanvasJS.Chart("qualityChartContainer",{
+            title :{
+              text: "quality"
+            },
+            axisX: {
+              title: "Time"
+            },
+            axisY: {
+              title: "ppm"
+            },
+            data: [{
+              type: "line",
+              dataPoints : qualityDps
+            }]
+          });
+          qualityChart.render();
+
+          var xVal = qualityDps.length + 1;
           var updateInterval = 1000;
-    
+
           var updateChart = function () {
-          speedDps.push({x: xVal,y: speed});
-          angleDps.push({x: xVal,y: angle});
-          
+          qualityDps.push({x: xVal,y: quality});
           xVal++;
-          if (speedDps.length >  10 )
+          if (qualityDps.length >  10 )
           {
-            speedDps.shift();
-            angleDps.shift();				
+            qualityDps.shift();
           }
 
-          speedChart.render();
-          angleChart.render();		
-    
-      // update chart after specified time. 
-    
+          qualityChart.render();
+
+      // update chart after specified time.
+
           };
           $(document).ready(function(){
                 updateTable();
@@ -74,13 +51,10 @@
             function updateTable(){
                 $.post("readstatus.php",
                 function(data){
-                    speed = parseFloat(data[0].speed);
-                    angle = parseFloat(data[0].angle);
+                    quality = parseFloat(data[0].quality);
                 } )
             }
-    
     setInterval(function(){updateChart()}, updateInterval); 
-    
     }
     </script>
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
@@ -92,24 +66,17 @@
             <i class="fas fa-bars" id="sidebar_btn"></i>
         </label>
         <div class="left_area">
-            <h3>Hệ thống điều khiển robot cân bằng</h3>
+            <h3>Air quality sensor</h3>
         </div>
     </header>
     <div class="sidebar">
         <a href="info.html"><i class="fa fa-info-circle"></i><span>Thông tin</span></a>
         <a href="watch.html"><i class="fa fa-thermometer-full"></i><span>Giám sát</span></a>
-        <a href="control.html"><i class="fa fa-tint"></i><span>Điều khiển</span></a>
 
     </div>
     <div class="content">
-      <div class="speedChart" id="speedChartContainer">
-      </div>
-      <div class="angleChart" id="angleChartContainer" >
+      <div class="qualityChart" id="qualityChartContainer">
       </div>
     </div>
-      
-    
-    
-    
 </body>
 </html>
